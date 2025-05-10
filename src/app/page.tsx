@@ -8,10 +8,10 @@ export default function HomePage() {
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-4xl font-bold tracking-tight mb-8 text-center text-primary">
-        Welcome to the Art Showcase
+        アートショーケースへようこそ
       </h1>
       <p className="text-lg text-muted-foreground mb-12 text-center max-w-2xl mx-auto">
-        Explore a curated collection of masterpieces from renowned artists. Click on any artwork to learn more.
+        著名なアーティストによる厳選された傑作コレクションをご覧ください。詳細については、いずれかのアートワークをクリックしてください。
       </p>
       {paintings.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-8">
@@ -23,7 +23,7 @@ export default function HomePage() {
           })}
         </div>
       ) : (
-        <p className="text-center text-muted-foreground">No paintings to display at the moment. Please check back later.</p>
+        <p className="text-center text-muted-foreground">現在表示できる絵画はありません。後でもう一度ご確認ください。</p>
       )}
     </div>
   );

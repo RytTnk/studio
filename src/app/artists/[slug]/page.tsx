@@ -30,9 +30,10 @@ export default function ArtistPage({ params }: ArtistPageProps) {
   const paintingsByArtist = getPaintingsByArtistId(artist.id);
 
   let artistImageAiHint = "artist headshot";
-  if (artist.name.toLowerCase().includes("gogh")) artistImageAiHint = "impressionist painter";
-  if (artist.name.toLowerCase().includes("vinci")) artistImageAiHint = "renaissance man";
-  if (artist.name.toLowerCase().includes("kahlo")) artistImageAiHint = "female artist";
+  if (artist.name.toLowerCase().includes("gogh") || artist.name.toLowerCase().includes("ゴッホ")) artistImageAiHint = "impressionist painter";
+  if (artist.name.toLowerCase().includes("vinci") || artist.name.toLowerCase().includes("ヴィンチ")) artistImageAiHint = "renaissance man";
+  if (artist.name.toLowerCase().includes("kahlo") || artist.name.toLowerCase().includes("カーロ")) artistImageAiHint = "female artist";
+
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -63,12 +64,12 @@ export default function ArtistPage({ params }: ArtistPageProps) {
             <CardContent className="p-6 pt-0">
               <div className="space-y-4">
                 <div>
-                  <h3 className="font-semibold text-lg text-primary/80 mb-1">Biography</h3>
+                  <h3 className="font-semibold text-lg text-primary/80 mb-1">経歴</h3>
                   <p className="text-muted-foreground leading-relaxed">{artist.bio}</p>
                 </div>
                 {artist.concept && (
                   <div>
-                    <h3 className="font-semibold text-lg text-primary/80 mb-1">Artistic Concept</h3>
+                    <h3 className="font-semibold text-lg text-primary/80 mb-1">芸術的コンセプト</h3>
                     <p className="text-muted-foreground leading-relaxed">{artist.concept}</p>
                   </div>
                 )}
@@ -81,7 +82,7 @@ export default function ArtistPage({ params }: ArtistPageProps) {
       <Separator className="my-8" />
 
       <h2 className="text-3xl font-bold tracking-tight mb-8 text-center text-primary">
-        Works by {artist.name}
+        {artist.name}の作品
       </h2>
       {paintingsByArtist.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-8">
@@ -90,7 +91,7 @@ export default function ArtistPage({ params }: ArtistPageProps) {
           ))}
         </div>
       ) : (
-        <p className="text-center text-muted-foreground">No specific works by this artist are currently listed.</p>
+        <p className="text-center text-muted-foreground">このアーティストの特定の作品は現在リストされていません。</p>
       )}
     </div>
   );

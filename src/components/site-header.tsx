@@ -8,13 +8,13 @@ export function SiteHeader() {
         <Link href="/" className="mr-6 flex items-center space-x-2 group">
           <Palette className="h-7 w-7 text-primary group-hover:text-accent transition-colors" />
           <span className="font-bold text-xl tracking-tight group-hover:text-accent transition-colors">
-            Art Showcase
+            アートショーケース
           </span>
         </Link>
         <nav className="flex flex-1 items-center justify-end space-x-4">
           {/* Future navigation links can go here. For example:
           <Link href="/artists" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
-            Artists
+            アーティスト
           </Link>
           */}
         </nav>

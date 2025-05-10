@@ -35,12 +35,13 @@ export default function PaintingPage({ params }: PaintingPageProps) {
   const relatedPaintings = artist ? getPaintingsByArtistId(artist.id).filter(p => p.id !== painting.id).slice(0, 3) : [];
 
   let mainImageAiHint = "art masterpiece";
-  if (painting.title?.toLowerCase().includes("starry")) mainImageAiHint = "van gogh style";
-  else if (painting.title?.toLowerCase().includes("mona lisa")) mainImageAiHint = "renaissance portrait";
+  if (painting.title?.toLowerCase().includes("starry") || painting.title?.toLowerCase().includes("星月夜")) mainImageAiHint = "van gogh style";
+  else if (painting.title?.toLowerCase().includes("mona lisa") || painting.title?.toLowerCase().includes("モナ・リザ")) mainImageAiHint = "renaissance portrait";
+
 
   let artistImageAiHint = "artist photo";
-  if (artist?.name.toLowerCase().includes("gogh")) artistImageAiHint = "male painter";
-  if (artist?.name.toLowerCase().includes("vinci")) artistImageAiHint = "historic figure";
+  if (artist?.name.toLowerCase().includes("gogh") || artist?.name.toLowerCase().includes("ゴッホ")) artistImageAiHint = "male painter";
+  if (artist?.name.toLowerCase().includes("vinci") || artist?.name.toLowerCase().includes("ヴィンチ")) artistImageAiHint = "historic figure";
 
 
   return (
@@ -86,7 +87,7 @@ export default function PaintingPage({ params }: PaintingPageProps) {
               )}
               {painting.dimensions && (
                 <p className="text-sm text-muted-foreground mb-4">
-                  <strong>Dimensions:</strong> {painting.dimensions}
+                  <strong>寸法:</strong> {painting.dimensions}
                 </p>
               )}
               
@@ -99,7 +100,7 @@ export default function PaintingPage({ params }: PaintingPageProps) {
                       <AvatarFallback>{artist.name.substring(0, 2).toUpperCase()}</AvatarFallback>
                     </Avatar>
                     <div>
-                      <p className="text-sm text-muted-foreground">Artist</p>
+                      <p className="text-sm text-muted-foreground">アーティスト</p>
                       <Link href={`/artists/${artist.slug}`} className="font-semibold text-lg text-primary hover:text-accent transition-colors">
                         {artist.name}
                       </Link>
@@ -107,7 +108,7 @@ export default function PaintingPage({ params }: PaintingPageProps) {
                   </div>
                   <p className="text-sm text-muted-foreground line-clamp-3 mb-2">{artist.bio}</p>
                   <Link href={`/artists/${artist.slug}`} className="text-sm text-accent hover:underline flex items-center">
-                    Learn more about {artist.name} <ExternalLink className="ml-1 h-3 w-3" />
+                    {artist.name}についてもっと知る <ExternalLink className="ml-1 h-3 w-3" />
                   </Link>
                 </>
               )}
@@ -120,7 +121,7 @@ export default function PaintingPage({ params }: PaintingPageProps) {
       {relatedPaintings.length > 0 && artist && (
         <div className="mt-16">
           <h2 className="text-2xl font-semibold tracking-tight mb-6 text-primary">
-            More from {artist.name}
+            {artist.name}の他の作品
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {relatedPaintings.map(p => (

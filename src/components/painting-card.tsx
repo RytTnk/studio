@@ -11,9 +11,10 @@ interface PaintingCardProps {
 export function PaintingCard({ painting }: PaintingCardProps) {
   // Determine AI hint based on title or description if available
   let aiHint = "art painting"; // Default hint
-  if (painting.title?.toLowerCase().includes("night")) aiHint = "night scene";
-  else if (painting.title?.toLowerCase().includes("lisa") || painting.title?.toLowerCase().includes("portrait")) aiHint = "portrait art";
-  else if (painting.title?.toLowerCase().includes("frida")) aiHint = "folk art";
+  if (painting.title?.toLowerCase().includes("night") || painting.title?.toLowerCase().includes("夜")) aiHint = "night scene";
+  else if (painting.title?.toLowerCase().includes("lisa") || painting.title?.toLowerCase().includes("portrait") || painting.title?.toLowerCase().includes("肖像")) aiHint = "portrait art";
+  else if (painting.title?.toLowerCase().includes("frida") || painting.title?.toLowerCase().includes("フリーダ")) aiHint = "folk art";
+
 
   return (
     <Link href={`/paintings/${painting.slug}`} className="group block">
@@ -40,7 +41,7 @@ export function PaintingCard({ painting }: PaintingCardProps) {
             </CardDescription>
           )}
           <div className="mt-3 flex items-center text-sm text-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            View Details <ArrowRight className="ml-1 h-4 w-4" />
+            詳細を見る <ArrowRight className="ml-1 h-4 w-4" />
           </div>
         </CardContent>
       </Card>
